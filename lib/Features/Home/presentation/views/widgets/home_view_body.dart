@@ -1,5 +1,9 @@
+import 'package:book_c/Features/Home/presentation/views/widgets/Best_Seller_List_View_item.dart';
 import 'package:book_c/Features/Home/presentation/views/widgets/Custom_List_View_Item.dart';
+import 'package:book_c/Features/Home/presentation/views/widgets/Featured_List_View.dart';
 import 'package:book_c/Features/Home/presentation/views/widgets/custom_app_bar.dart';
+import 'package:book_c/core/utils/assets.dart';
+import 'package:book_c/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -7,26 +11,35 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      children: [CustomAppBar(), FeaturedListView()],
-    );
-  }
-}
-
-class FeaturedListView extends StatelessWidget {
-  const FeaturedListView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height * .3,
-      child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          itemBuilder: (context, index) {
-            return const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 4),
-                child: CustomListViewItem());
-          }),
+    return const CustomScrollView(
+      slivers: [
+        SliverToBoxAdapter(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 30),
+                  child: CustomAppBar()),
+              FeaturedListView(),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 30),
+                child: Text(
+                  'Best Seller',
+                  style: Styles.textStyle18,
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+            ],
+          ),
+        ),
+        SliverFillRemaining(
+          child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 30),
+              child: BestSellerListViewItem()),
+        ),
+      ],
     );
   }
 }
