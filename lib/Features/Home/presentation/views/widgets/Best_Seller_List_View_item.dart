@@ -20,7 +20,7 @@ class BestSellerListViewItem extends StatelessWidget {
         child: Row(
           children: [
             AspectRatio(
-              aspectRatio: 2.5 / 4,
+              aspectRatio: 2.7 / 4,
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
@@ -34,7 +34,7 @@ class BestSellerListViewItem extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              width: 30,
+              width: 4,
             ),
             Expanded(
               child: Column(
@@ -56,7 +56,8 @@ class BestSellerListViewItem extends StatelessWidget {
                     style: Styles.textStyle14,
                   ),
                   const SizedBox(
-                    height: 3,
+                    height: 5,
+                    width: 3,
                   ),
                   const Row(
                     children: [
@@ -65,7 +66,7 @@ class BestSellerListViewItem extends StatelessWidget {
                         style: Styles.textStyle20,
                       ),
                       Spacer(),
-                      BrandStar(),
+                      BookRating(),
                     ],
                   ),
                 ],
@@ -78,13 +79,16 @@ class BestSellerListViewItem extends StatelessWidget {
   }
 }
 
-class BrandStar extends StatelessWidget {
-  const BrandStar({super.key});
+class BookRating extends StatelessWidget {
+  const BookRating(
+      {super.key, this.mainAxisAlignment = MainAxisAlignment.start});
 
+  final MainAxisAlignment mainAxisAlignment;
   @override
   Widget build(BuildContext context) {
-    return const Row(
-      children: [
+    return Row(
+      mainAxisAlignment: mainAxisAlignment,
+      children: const [
         Icon(
           FontAwesomeIcons.solidStar,
           color: Color(0xffFFDD4F),

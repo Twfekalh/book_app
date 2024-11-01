@@ -1,5 +1,5 @@
 import 'package:book_c/Features/Home/presentation/views/widgets/Best_Seller_List_View_item.dart';
-import 'package:book_c/Features/Home/presentation/views/widgets/Custom_List_View_Item.dart';
+import 'package:book_c/Features/Home/presentation/views/widgets/feature_List_View_Item.dart';
 import 'package:book_c/Features/Home/presentation/views/widgets/Featured_List_View.dart';
 import 'package:book_c/Features/Home/presentation/views/widgets/custom_app_bar.dart';
 import 'package:book_c/core/utils/assets.dart';
@@ -34,7 +34,7 @@ class HomeViewBody extends StatelessWidget {
             ],
           ),
         ),
-        SliverFillRemaining(
+        SliverToBoxAdapter(
           child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 30),
               child: BestSellerListViewItem()),
